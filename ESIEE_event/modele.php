@@ -22,5 +22,21 @@
 			$resultats = $select->fetchAll();
 			return $resultats;
 		}
+		public static function  insertPorte ($tab)
+		{
+			$requete = "insert into porte values (null, :designation, 
+			:dateporte, :heuredebut, :heurefin, :lieu);"; 
+
+			$donnees = array (":designation"=> $tab['designation'], 
+					":dateporte"=> $tab['dateporte'], 
+					":heuredebut"=> $tab['heuredebut'], 
+					":heurefin"=> $tab['heurefin'],
+					":lieu"=> $tab['lieu']
+				); 
+			Modele::connexion () ;
+			$insert = Modele::$pdo->prepare ($requete); 
+			$insert->execute ($donnees); 
+
+		}
 	}
 ?>

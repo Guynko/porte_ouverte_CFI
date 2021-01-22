@@ -38,7 +38,15 @@
 	<tr>
 		<td> ID de la porte </td><td> Désignation </td><td> Date de l'événement </td><td> heure de début </td><td> Heure de fin </td><td> Lieu </td>
 	</tr>
+
 <?php
+	if(isset($_POST['Valider']))
+	{
+		//appelle du modele pour inserer une nouvelle porte dans la bdd
+		Modele::insertPorte($_POST);
+		echo "<dbr/> Insertion reussi";
+	}
+	//appel du model pour l'extraction de outes ls portes
 	$resultats = Modele::selectAllPortes();
 	foreach ($resultats as $unePorte)
 	{
